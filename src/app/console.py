@@ -31,12 +31,12 @@ class Console():
         )
 
     def draw_game(self):
-        for y in range(self.zemlja.dolzina+1):
-            for x in range(self.zemlja.sirina+1):
+        for y in range(self.zemlja.dolzina + 1):
+            for x in range(self.zemlja.sirina + 1):
                 flag = False
                 for b in self.zemlja.barabe:
                     if b.x == x and b.y == y:
-                        print('B ',end='')
+                        print('B ', end='')
                         flag = True
                         break
                 if flag:
@@ -44,14 +44,22 @@ class Console():
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
                     print('H ', end='')
                 else:
-                   print('. ', end='')
+                    print('. ', end='')
             print()
-
 
     def input(self):
         dx = int(input("Vnesi dx: "))
         dy = int(input("Vnesi dy: "))
-        self.zemlja.hero.premikanje(dx=dx, dy=dy)
+        # omejitev gibanje heroja na sirino, dolzino zemlje
+        x, y = self.zemlja.hero.trenutna_pozicija()
+
+        if x + dx > self.zemlja.sirina or x - (-dx) < 0:
+            print('Premik heroja izven sirine zemlje')
+        elif y + dy > self.zemlja.dolzina or y - (-dy) < 0:
+            print('Premik heroja izven dolžine zemlje')
+        else:
+            self.zemlja.hero.premikanje(dx=dx, dy=dy)
+
 
         for b in self.zemlja.barabe:
             b.nakljucno_gibanje()
