@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Hero:
     def __init__(self, x: int, y: int):
         self.x = x
@@ -7,3 +11,6 @@ class Hero:
     def premikanje(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
+
+    def trenutna_pozicija(self):
+        return self.x, self.y

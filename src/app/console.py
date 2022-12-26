@@ -55,3 +55,4 @@ class Console():
 
         for b in self.zemlja.barabe:
             b.nakljucno_gibanje()
+#  implement end game detection logic
