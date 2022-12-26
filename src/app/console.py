@@ -2,7 +2,7 @@ from src.domain.baraba import Baraba
 from src.domain.hero import Hero
 from src.domain.zemlja import Zemlja
 import random
-
+import sys
 
 class Console():
     def __init__(self):
@@ -60,7 +60,16 @@ class Console():
         else:
             self.zemlja.hero.premikanje(dx=dx, dy=dy)
 
-
+    #  implement end game detection logic
+    def end_game(self):
+        # trenutna pozicija heroja
+        xh, yh = self.zemlja.hero.trenutna_pozicija()
         for b in self.zemlja.barabe:
-            b.nakljucno_gibanje()
-#  implement end game detection  logic
+            # trenutna pozicija barab
+            xb, yb = b.trenutna_pozicija()
+            if yh == yb and xb in range(xh - 3, xh + 4):
+                print('Baraba ujeta, princessa rešena in igre konec...')
+                sys.exit()
+            elif xh == xb and yb in range(yh - 3, yh + 4):
+                print('Baraba ujeta, princessa rešena in igre konec...')
+                sys.exit()

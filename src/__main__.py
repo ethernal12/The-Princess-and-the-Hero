@@ -9,4 +9,5 @@ console.new_game()
 while True:
     console.draw_game()
     console.input()
+    console.end_game()
 
