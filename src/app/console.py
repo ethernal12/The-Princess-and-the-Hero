@@ -58,13 +58,13 @@ class Console():
                 flag = False
                 for b in self.zemlja.barabe:
                     if b.x == x and b.y == y:
-                        print('B ', end='')
+                        print('\033[31mB\033[0m ', end='')
                         flag = True
                         break
                 if flag:
                     continue
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
-                    print('H ', end='')
+                    print('\033[32mH\033[0m ', end='')
                 elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
                     print('\u2665', end='')
                 else:
@@ -142,8 +142,8 @@ class Console():
                 print('Heroj ujet, princeska zaman čaka svojega junaka...')
                 return True
             elif xb == xp and yb == yp:
-                print('Princeska ujeta...')
+                print('Barbaba ujela princesko...')
                 return True
             elif xh == xp and yh == yp :
-                print('Prineska rešena in pade v objem mogočnemu heroju..')
+                print('Prineska rešena in pade v objem pogumnemu heroju..')
                 return True
