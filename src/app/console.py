@@ -66,11 +66,12 @@ class Console():
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
                     print('H ', end='')
                 elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
-                    print('P ', end='')
+                    print('\u2665', end='')
+
                 else:
                     print('. ', end='')
             print()
-
+#'\u2665' heart symbol
     def input(self):
         dx = int(input("Vnesi dx: "))
         dy = int(input("Vnesi dy: "))
@@ -91,8 +92,8 @@ class Console():
             # trenutna pozicija barab
             xb, yb = b.trenutna_pozicija()
             if yh == yb and xb in range(xh - 3, xh + 4):
-                print('Baraba ujeta, princessa rešena in igre konec...')
+                print('Baraba ujeta, princesa rešena in igre je konec...')
                 sys.exit()
             elif xh == xb and yb in range(yh - 3, yh + 4):
-                print('Baraba ujeta, princessa rešena in igre konec...')
+                print('Baraba ujeta, princesa rešena in igre je konec...')
                 sys.exit()
