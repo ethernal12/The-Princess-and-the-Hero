@@ -114,29 +114,36 @@ class Console():
             # če je premik trenutne barabe na pozicijo katerekoli
             # druge barabe, ponovi gibanje barabe dokler temu ni tako
             while (x, y) in trenutnePozicijeBarab:
-                print(str((x, y)) + 'pozicija že obstaja za drugo barabo')
-                print(trenutnePozicijeBarab)
+                #print(str((x, y)) + 'pozicija že obstaja za drugo barabo')
+                #print(trenutnePozicijeBarab)
                 b.nakljucno_gibanje()
                 x, y = b.trenutna_pozicija()
-                print('ponovna izbira pozicije barabe je:' + str((x, y)))
+                #print('ponovna izbira pozicije barabe je:' + str((x, y)))
 
-        for b in self.zemlja.barabe:
-            naKoncu.append((b.x, b.y))
-        print(naKoncu, 'nakoncu')
-        if len(set(naKoncu)) == len(naKoncu):
-            print("Barabe so vsaka na svojem mestu.")
-        else:
-            print("Baraba je na drugi barabi.")
+        # for b in self.zemlja.barabe:
+        #     naKoncu.append((b.x, b.y))
+        # print(naKoncu, 'nakoncu')
+        # if len(set(naKoncu)) == len(naKoncu):
+        #     print("Barabe so vsaka na svojem mestu.")
+        # else:
+        #     print("Baraba je na drugi barabi.")
 
     def end_game(self):
         # trenutna pozicija heroja
         xh, yh = self.zemlja.hero.trenutna_pozicija()
+        xp, yp = self.zemlja.princeska.trenutna_pozicija()
         for b in self.zemlja.barabe:
             # trenutna pozicija barab
             xb, yb = b.trenutna_pozicija()
-            if yh == yb and xb in range(xh - 3, xh + 4):
-                print('Baraba ujeta, princesa rešena in igre je konec...')
+            if yh == yb and xb in range(xh - 1, xh + 2) :
+                print('Heroj ujet, princeska zaman čaka svojega junaka...')
                 return True
-            elif xh == xb and yb in range(yh - 3, yh + 4):
-                print('Baraba ujeta, princesa rešena in igre je konec...')
+            elif xh == xb and yb in range(yh - 1, yh + 2) :
+                print('Heroj ujet, princeska zaman čaka svojega junaka...')
+                return True
+            elif xb == xp and yb == yp:
+                print('Princeska ujeta...')
+                return True
+            elif xh == xp and yh == yp :
+                print('Prineska rešena in pade v objem mogočnemu heroju..')
                 return True

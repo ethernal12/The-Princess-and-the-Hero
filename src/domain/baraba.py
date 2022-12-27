@@ -17,10 +17,10 @@ class Baraba():
             naslednjaPozicijaX = self.x + nalkjucniX
             naslednjaPozicijaY = self.y + nalkjucniY
             if naslednjaPozicijaX < 0 or naslednjaPozicijaX > 10:
-                print('x')
+
                 nalkjucniX = random.randint(-self.hitrost, self.hitrost)
             elif naslednjaPozicijaY < 0 or naslednjaPozicijaY > 10:
-                print('y')
+
                 nalkjucniY = random.randint(-self.hitrost, self.hitrost)
             else:
                 break
