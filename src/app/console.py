@@ -21,7 +21,6 @@ class Console():
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x,y) for x in range(vrste) for y in range(stolpi)]
 
-
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
             x, y = random.choice(moznePozicije)
@@ -67,11 +66,10 @@ class Console():
                     print('H ', end='')
                 elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
                     print('\u2665', end='')
-
                 else:
                     print('. ', end='')
             print()
-#'\u2665' heart symbol
+    # premik heroja z inputi
     def input(self):
         dx = int(input("Vnesi dx: "))
         dy = int(input("Vnesi dy: "))
@@ -84,6 +82,9 @@ class Console():
             print('Premik heroja izven dolžine zemlje')
         else:
             self.zemlja.hero.premikanje(dx=dx, dy=dy)
+    def premakni_barabo(self):
+        for b in self.zemlja.barabe:
+            b.nakljucno_gibanje()
 
     def end_game(self):
         # trenutna pozicija heroja
@@ -93,7 +94,7 @@ class Console():
             xb, yb = b.trenutna_pozicija()
             if yh == yb and xb in range(xh - 3, xh + 4):
                 print('Baraba ujeta, princesa rešena in igre je konec...')
-                sys.exit()
+                return True
             elif xh == xb and yb in range(yh - 3, yh + 4):
                 print('Baraba ujeta, princesa rešena in igre je konec...')
-                sys.exit()
+                return True
