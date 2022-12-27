@@ -4,32 +4,46 @@ from src.domain.zemlja import Zemlja
 import random
 import sys
 
+
 class Console():
     def __init__(self):
         self.zemlja = None
         self.level = 1
+        self.runda = 1
 
     def new_game(self):
         barabe: list[Baraba] = []
         stBarab = self.level * 2
+        vrste =10 * self.level
+        stolpi =10 * self.level
+
+        # generiraj vse mozne kombinacije matrice
+        moznePozicije = [(x,y) for x in range(vrste) for y in range(stolpi)]
+
 
         for i in range(stBarab):
+            # izberi med številkami, ki so še na voljo v naboru številk
+            x, y = random.choice(moznePozicije)
             barabe.append(
                 Baraba(
-                    x=random.randint(0, 10 * self.level),
-                    y=random.randint(0, 10 * self.level),
+                    x=x,
+                    y=y,
                     hitrost=2)
             )
+            # vsakic odstrani pozicijo iz moznih pozicij
+            moznePozicije.remove((x, y))
 
+        x, y = random.choice(moznePozicije)
         self.zemlja = Zemlja(
             sirina=10 * self.level,
             dolzina=10 * self.level,
             hero=Hero(
-                x=random.randint(0, 10 * self.level),
-                y=random.randint(0, 10 * self.level)),
+                x=x,
+                y=y),
             barabe=barabe
         )
-
+        # vsakic odstrani pozicijo iz moznih pozicij
+        moznePozicije.remove((x, y))
     def draw_game(self):
         for y in range(self.zemlja.dolzina + 1):
             for x in range(self.zemlja.sirina + 1):
@@ -60,7 +74,6 @@ class Console():
         else:
             self.zemlja.hero.premikanje(dx=dx, dy=dy)
 
-    #  implement end game detection logic
     def end_game(self):
         # trenutna pozicija heroja
         xh, yh = self.zemlja.hero.trenutna_pozicija()
