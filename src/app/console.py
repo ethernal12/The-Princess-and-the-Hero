@@ -1,5 +1,6 @@
 from src.domain.baraba import Baraba
 from src.domain.hero import Hero
+from src.domain.princeska import Princeska
 from src.domain.zemlja import Zemlja
 import random
 import sys
@@ -22,7 +23,7 @@ class Console():
 
 
         for i in range(stBarab):
-            # izberi med številkami, ki so še na voljo v naboru številk
+            # izberi med pozicijami, ki so še na voljo
             x, y = random.choice(moznePozicije)
             barabe.append(
                 Baraba(
@@ -30,20 +31,27 @@ class Console():
                     y=y,
                     hitrost=2)
             )
-            # vsakic odstrani pozicijo iz moznih pozicij
+            # vsakic odstrani pozicijo barabe iz moznih pozicij
             moznePozicije.remove((x, y))
+        # izberi pozicije za heroja in princesko
+        xh, yh = random.choice(moznePozicije)
+        moznePozicije.remove((xh, yh))
+        xp, yp = random.choice(moznePozicije)
+        moznePozicije.remove((xp, yp))
 
-        x, y = random.choice(moznePozicije)
         self.zemlja = Zemlja(
             sirina=10 * self.level,
             dolzina=10 * self.level,
             hero=Hero(
-                x=x,
-                y=y),
+                x=xh,
+                y=yh),
+            princeska=Princeska(
+                x=xp,
+                y=yp
+            ),
             barabe=barabe
         )
-        # vsakic odstrani pozicijo iz moznih pozicij
-        moznePozicije.remove((x, y))
+
     def draw_game(self):
         for y in range(self.zemlja.dolzina + 1):
             for x in range(self.zemlja.sirina + 1):
@@ -57,6 +65,8 @@ class Console():
                     continue
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
                     print('H ', end='')
+                elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
+                    print('P ', end='')
                 else:
                     print('. ', end='')
             print()
