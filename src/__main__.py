@@ -7,7 +7,7 @@ while True:
     console.draw_game()
     console.input()
     console.premakni_barabo()
-    if console.end_game():
-        break
+    console.end_game()
+
 
 

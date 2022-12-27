@@ -14,12 +14,13 @@ class Console():
 
     def new_game(self):
         barabe: list[Baraba] = []
-        stBarab = self.level * 2
-        vrste =10 * self.level
-        stolpi =10 * self.level
+        stBarab = self.level * 9
+
+        sirina = 10 * self.level
+        visina = 10 * self.level
 
         # generiraj vse mozne kombinacije matrice
-        moznePozicije = [(x,y) for x in range(vrste) for y in range(stolpi)]
+        moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
 
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
@@ -69,22 +70,63 @@ class Console():
                 else:
                     print('. ', end='')
             print()
+
     # premik heroja z inputi
     def input(self):
-        dx = int(input("Vnesi dx: "))
-        dy = int(input("Vnesi dy: "))
-        # omejitev gibanje heroja na sirino, dolzino zemlje
+        global dx
+        global dy
         x, y = self.zemlja.hero.trenutna_pozicija()
+        while True:
 
-        if x + dx > self.zemlja.sirina or x - (-dx) < 0:
-            print('Premik heroja izven sirine zemlje')
-        elif y + dy > self.zemlja.dolzina or y - (-dy) < 0:
-            print('Premik heroja izven dolžine zemlje')
-        else:
-            self.zemlja.hero.premikanje(dx=dx, dy=dy)
+            dx = int(input("Vnesi dx med +2 in -2, premik mora biti v mejah zemlje!: "))
+            print(x - (-dx))
+            print(x - (-dx) >= 0)
+            if dx in [1, 2, -1, -2, 0] and (x + dx <= self.zemlja.sirina and x - (-dx) >= 0):
+                break
+        while True:
+
+            dy = int(input("Vnesi dy med +2 in -2, premik mora biti v mejah zemlje!: "))
+            print(y + dy, 'dy')
+            print(y + dy < self.zemlja.dolzina or y - (-dy) > 0)
+            if dy in [1, 2, -1, -2, 0] and (y + dy <= self.zemlja.dolzina and y - (-dy) >= 0):
+                break
+        self.zemlja.hero.premikanje(dx=dx, dy=dy)
+
     def premakni_barabo(self):
+        sirina = 10 * self.level
+        visina = 10 * self.level
+
+        # generiraj vse mozne kombinacije matrice
+        trenutnePozicijeBarab = []
+        naKoncu = []
+
         for b in self.zemlja.barabe:
+            trenutnePozicijeBarab.append((b.x, b.y))
+
+        for b in self.zemlja.barabe:
+            print(b.x, b.y, 'trenutna baraba v for')
+            # ostrani x,y pozicijo trenutne barabe
+            trenutnePozicijeBarab.remove((b.x, b.y))
+            # izvedni naključno gibanje barabe
             b.nakljucno_gibanje()
+            # dobi trenutno pozicijo barabe
+            x, y = b.trenutna_pozicija()
+            # če je premik trenutne barabe na pozicijo katerekoli
+            # druge barabe, ponovi gibanje barabe dokler temu ni tako
+            while (x, y) in trenutnePozicijeBarab:
+                print(str((x, y)) + 'pozicija že obstaja za drugo barabo')
+                print(trenutnePozicijeBarab)
+                b.nakljucno_gibanje()
+                x, y = b.trenutna_pozicija()
+                print('ponovna izbira pozicije barabe je:' + str((x, y)))
+
+        for b in self.zemlja.barabe:
+            naKoncu.append((b.x, b.y))
+        print(naKoncu, 'nakoncu')
+        if len(set(naKoncu)) == len(naKoncu):
+            print("Barabe so vsaka na svojem mestu.")
+        else:
+            print("Baraba je na drugi barabi.")
 
     def end_game(self):
         # trenutna pozicija heroja

@@ -1,14 +1,14 @@
 import random
 from dataclasses import dataclass
 
-
 @dataclass
-class Baraba:
+class Baraba():
     x: int
     y: int
     hitrost: int
 
     def nakljucno_gibanje(self):
+
         global nalkjucniX
         global nalkjucniY
         while True:
