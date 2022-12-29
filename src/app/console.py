@@ -86,13 +86,24 @@ class Console():
         x, y = self.zemlja.hero.trenutna_pozicija()
 
         while True:
-            dx = int(input('\033[92mVnesi dx med +2 in -2:\033[0m '))
-            if dx in [1, 2, -1, -2, 0]:
-                break
+            try:
+                dx = int(input('\033[92mVnesi dx med +2 in -2:\033[0m '))
+                if not (-2 <= dx <= 2):
+                    print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dx.\033[0m')
+                elif not str(dx).isspace():
+                    break
+            except ValueError:
+                print('\033[31mProsim vnesite številko dx med +2 in -2.\033[0m')
         while True:
-            dy = int(input('\033[92mVnesi dy med +2 in -2:\033[0m '))
-            if dy in [1, 2, -1, -2, 0]:
-                break
+            try:
+                dy = int(input('\033[92mVnesi dy med +2 in -2:\033[0m '))
+                if not (-2 <= dy <= 2):
+                    print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dx.\033[0m')
+                elif not str(dy).isspace():
+                    break
+            except ValueError:
+                print('\033[31mProsim vnesite številko dx med +2 in -2.\033[0m')
+
         # če si izven omejitve zemlje se heroj izriše na drugi strani
         if x + dx > self.zemlja.sirina:
             self.zemlja.hero.x = x + dx - self.zemlja.sirina - 1
@@ -145,7 +156,6 @@ class Console():
             elif self.stetjeKorakov == self.maxKoraki:
                 print('\033[31mPresegli ste določeno število potez, igre konec!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-
 
 
 # prestavil importe po izvajanju kode zaradi errorja 'circular import', kjer se moduli kličejo v loopu...
