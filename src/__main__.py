@@ -1,4 +1,5 @@
 from src.app.console import Console
+from termcolor import colored
 
 console = Console()
 console.new_game()
@@ -9,12 +10,18 @@ while True:
     # princeska ujeta ali heroj ujet, konec igre
     if console.end_game() is True:
         break
-    # princeska rešena, igralec gre v naslednji nivo
     elif console.end_game() is False:
-        print('\033[32mPrinceska rešena in pade v objem pogumnemu heroju...\033[0m')
+
         console.level += 1
-        console.rezultat += (console.max_koraki - console.stetjeKorakov) * 2
-        console.new_game()
+        console.rezultat += (console.maxKoraki - console.stetjeKorakov) * 2
+        if console.level == 8:
+            print(f'\033[33mČestitke, končali ste igro, princesa in heroj živit srečno do konca svojih dni!\033[0m')
+            print(f'\033[92mVaš končni SCORE: {console.rezultat} in prišli ste do LEVEL: {console.level}\033[0m')
+            break
+        else:
+
+            print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
+            console.new_game()
 
 
 

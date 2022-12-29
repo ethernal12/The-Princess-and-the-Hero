@@ -8,7 +8,9 @@ from src.domain.princeska import Princeska
 @dataclass
 class Zemlja:
     sirina: int
-    dolzina: int
+    visina: int
     hero: Hero
     princeska: Princeska
     barabe: list[Baraba]
+
+
