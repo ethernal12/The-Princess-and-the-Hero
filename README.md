@@ -1,7 +1,7 @@
 # The Princess and the Hero
 ### Configuracije igre:
 
-* Kloniraj REPO in v root directoriju zaženi __main__.py z ukazom: 
+* Kloniraj REPO in v root directoriju zaženi \__main__.py z ukazom: 
 ~~~
 python src
 ~~~
