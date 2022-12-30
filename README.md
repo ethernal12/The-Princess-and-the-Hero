@@ -1,5 +1,11 @@
 # The Princess and the Hero
+### Configuracije igre:
 
+* Kloniraj REPO in v root directoriju zaženi main z ukazom: 
+~~~
+python src
+~~~
+* Igra nima zunanjih knjižnic
 ### Kako igrati igro:
 * Igra se začne s začetno postavitvijo heroja, princeske in barab na igrišču.
 * Igralec mora vtipkati željeno pozicijo dx in dy za premik heroja. Premik je omejen na razpon +2 , -2 koraka.
