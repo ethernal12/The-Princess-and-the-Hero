@@ -5,7 +5,7 @@
 ~~~
 python src
 ~~~
-* Igra nima zunanjih knjižnic
+* Igra ne vsebuje zunanjih knjižnic
 ### Kako igrati igro:
 * Igra se začne s začetno postavitvijo heroja, princeske in barab na igrišču.
 * Igralec mora vtipkati željeno pozicijo dx in dy za premik heroja. Premik je omejen na razpon +2 , -2 koraka.
