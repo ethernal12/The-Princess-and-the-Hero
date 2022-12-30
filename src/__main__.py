@@ -1,5 +1,9 @@
+import sys
+import os
+# adding directory to python path
+sys.path.append(os.getcwd())
+
 from src.app.console import Console
-from termcolor import colored
 
 console = Console()
 console.new_game()
@@ -21,6 +25,7 @@ while True:
         else:
             print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
             console.new_game()
+
 
 
 

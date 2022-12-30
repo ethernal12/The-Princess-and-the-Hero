@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 import random
-
+import sys
 
 @dataclass
 class Console():
@@ -86,23 +86,29 @@ class Console():
         x, y = self.zemlja.hero.trenutna_pozicija()
 
         while True:
+            uporabniskiInput = input('\033[92mVnesi dx med +2 in -2:\033[0m ')
+            if uporabniskiInput == "q":
+                sys.exit()
             try:
-                dx = int(input('\033[92mVnesi dx med +2 in -2:\033[0m '))
+                dx = int(uporabniskiInput)
                 if not (-2 <= dx <= 2):
                     print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dx.\033[0m')
-                elif not str(dx).isspace():
+                else:
                     break
             except ValueError:
                 print('\033[31mProsim vnesite številko dx med +2 in -2.\033[0m')
         while True:
+            uporabniskiInput = input('\033[92mVnesi dy med +2 in -2:\033[0m ')
+            if uporabniskiInput == "q":
+                sys.exit()
             try:
-                dy = int(input('\033[92mVnesi dy med +2 in -2:\033[0m '))
+                dy = int(uporabniskiInput)
                 if not (-2 <= dy <= 2):
-                    print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dx.\033[0m')
-                elif not str(dy).isspace():
+                    print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dy.\033[0m')
+                else:
                     break
             except ValueError:
-                print('\033[31mProsim vnesite številko dx med +2 in -2.\033[0m')
+                print('\033[31mProsim vnesite številko dy med +2 in -2.\033[0m')
 
         # če si izven omejitve zemlje se heroj izriše na drugi strani
         if x + dx > self.zemlja.sirina:
