@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import random
 import sys
 
+
 @dataclass
 class Console():
     def __init__(self):
@@ -54,6 +55,7 @@ class Console():
         )
 
     def draw_game(self):
+        print('draw game')
         print(f'\033[1m\033[33m{self.level} LEVEL\033[0m')
         print(f'\033[1m\033[33mSCORE {self.rezultat} \033[0m')
         print('---------')
@@ -72,7 +74,7 @@ class Console():
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
                     print('\033[92mH\033[0m ', end='')
                 elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
-                    print('\u2665', end='')
+                    print('\u2665 ', end='')
                 else:
                     print('. ', end='')
             print()
@@ -139,11 +141,10 @@ class Console():
                 x, y = b.trenutna_pozicija()
             trenutnePozicijeBarab.append((x, y))
 
-    def end_game(self):
+    def end_game_loose(self):
         xh, yh = self.zemlja.hero.trenutna_pozicija()
         xp, yp = self.zemlja.princeska.trenutna_pozicija()
-        if xh == xp and yh == yp:
-            return False
+
         for b in self.zemlja.barabe:
             xb, yb = b.trenutna_pozicija()
             # pogoji za konec igre
@@ -163,6 +164,21 @@ class Console():
                 print('\033[31mPresegli ste določeno število potez, igre konec!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
 
+    def end_game_win(self):
+        xh, yh = self.zemlja.hero.trenutna_pozicija()
+        xp, yp = self.zemlja.princeska.trenutna_pozicija()
+
+        if xh == xp and yh == yp:
+            if self.level == 3:
+                print(
+                    f'\033[33mČestitke, končali ste igro, princesa in heroj živit srečno skupaj vse do konca svojih dni!\033[0m')
+                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return True
+            else:
+                print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
+                self.level += 1
+                self.rezultat += (self.maxKoraki - self.stetjeKorakov) * 2
+                return False
 
 # prestavil importe po izvajanju kode zaradi errorja 'circular import', kjer se moduli kličejo v loopu...
 from src.domain.baraba import Baraba
