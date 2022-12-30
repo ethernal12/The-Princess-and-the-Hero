@@ -17,9 +17,9 @@ class Console():
 
     def new_game(self):
         barabe: list[Baraba] = []
-        stBarab = self.level * 2
-        sirina = 15 - self.level
-        visina = 15 - self.level
+        stBarab = self.level * 7
+        sirina = 10 - self.level
+        visina = 10 - self.level
         self.preostaliKoraki = 10
 
         # generiraj vse mozne kombinacije matrice
@@ -169,15 +169,15 @@ class Console():
         xp, yp = self.zemlja.princeska.trenutna_pozicija()
 
         if xh == xp and yh == yp:
-            if self.level == 3:
+            self.level += 1
+            self.rezultat += (self.maxKoraki - self.stetjeKorakov) * 2
+            if self.level > 2:
                 print(
                     f'\033[33mČestitke, končali ste igro, princesa in heroj živit srečno skupaj vse do konca svojih dni!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
                 return True
             else:
                 print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
-                self.level += 1
-                self.rezultat += (self.maxKoraki - self.stetjeKorakov) * 2
                 return False
 
 # prestavil importe po izvajanju kode zaradi errorja 'circular import', kjer se moduli kličejo v loopu...
