@@ -16,8 +16,8 @@ class Console():
     def new_game(self):
         barabe: list[Baraba] = []
         stBarab = self.level * 2
-        sirina = 15 - self.level
-        visina = 15 - self.level
+        sirina = 13 - self.level
+        visina = 13 - self.level
         self.maxKoraki = 5
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
