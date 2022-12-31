@@ -14,7 +14,7 @@ python src
 * Cilj igre je priti do princese, ki je označena s srcem, jo tako rešiti pred barabami, ki jo hočejo uloviti in tako napreduješ v drugi nivo.
 
 * Če se ti med potjo približa baraba na en korak razdalje je igre konec, prav tako če medtem barabe ulovijo princeso je igre konec.
-* Če ti uspe priti do princese preden presežeš število 8 korakov, greš v naslednji nivo, kjer se polje igrišča zoži in število barab podvoji.
+* Če ti uspe priti do princese preden presežeš število 5 korakov, greš v naslednji nivo, kjer se polje igrišča zoži in število barab podvoji.
 * Igro končaš če prideš v 8 Nivo.
 
 ***Nasvet: Manj korakov porabiš da prideš po princese, večji je Score***

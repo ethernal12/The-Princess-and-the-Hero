@@ -10,18 +10,16 @@ class Console():
 
         self.zemlja = None
         self.level = 1
-        self.maxKoraki = 10
-        self.stetjeKorakov = 0
+        self.maxKoraki = 5
         self.rezultat = 0
-        self.preostaliKoraki = 10
+
 
     def new_game(self):
         barabe: list[Baraba] = []
-        stBarab = self.level * 7
-        sirina = 10 - self.level
-        visina = 10 - self.level
-        self.preostaliKoraki = 10
-
+        stBarab = self.level * 2
+        sirina = 15 - self.level
+        visina = 15 - self.level
+        self.maxKoraki = 5
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
 
@@ -59,7 +57,7 @@ class Console():
         print(f'\033[1m\033[33m{self.level} LEVEL\033[0m')
         print(f'\033[1m\033[33mSCORE {self.rezultat} \033[0m')
         print('---------')
-        print(f'\033[1m\033[33mPreostali koraki {self.preostaliKoraki} \033[0m')
+        print(f'\033[1m\033[33mPreostali koraki {self.maxKoraki} \033[0m')
         print('-------------------')
         for y in range(self.zemlja.visina + 1):
             for x in range(self.zemlja.sirina + 1):
@@ -83,8 +81,8 @@ class Console():
     def input(self):
         global dx
         global dy
-        self.stetjeKorakov += 1
-        self.preostaliKoraki = self.maxKoraki - self.stetjeKorakov
+        self.maxKoraki -= 1
+
         x, y = self.zemlja.hero.trenutna_pozicija()
 
         while True:
@@ -160,9 +158,10 @@ class Console():
                 print('\033[31mBaraba ujela princesko!Konec igre...\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
                 return True
-            elif self.stetjeKorakov == self.maxKoraki:
+            elif self.maxKoraki == 0:
                 print('\033[31mPresegli ste določeno število potez, igre konec!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return True
 
     def end_game_win(self):
         xh, yh = self.zemlja.hero.trenutna_pozicija()
@@ -170,8 +169,8 @@ class Console():
 
         if xh == xp and yh == yp:
             self.level += 1
-            self.rezultat += (self.maxKoraki - self.stetjeKorakov) * 2
-            if self.level > 2:
+            self.rezultat += self.maxKoraki * 2
+            if self.level > 7:
                 print(
                     f'\033[33mČestitke, končali ste igro, princesa in heroj živit srečno skupaj vse do konca svojih dni!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
@@ -179,6 +178,7 @@ class Console():
             else:
                 print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
                 return False
+
 
 # prestavil importe po izvajanju kode zaradi errorja 'circular import', kjer se moduli kličejo v loopu...
 from src.domain.baraba import Baraba
