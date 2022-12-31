@@ -7,6 +7,4 @@ class Princeska:
         self.x = x
         self.y = y
 
-    def trenutna_pozicija(self):
-        return self.x, self.y
 

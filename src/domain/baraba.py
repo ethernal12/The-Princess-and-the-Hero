@@ -15,7 +15,7 @@ class Baraba():
         console = Console()
         # pokličemo new_game v Console class
         console.new_game()
-        # Dostopimo do zemlja instance in atributa sirina
+        # Dostopimo do zemlja instance in atributa sirina/visina
         sirina = console.zemlja.sirina
         visina = console.zemlja.visina
 
@@ -41,5 +41,4 @@ class Baraba():
         self.x += nalkjucniX
         self.y += nalkjucniY
 
-    def trenutna_pozicija(self):
-        return self.x, self.y
+

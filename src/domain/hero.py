@@ -12,5 +12,4 @@ class Hero:
         self.x = self.x + dx
         self.y = self.y + dy
 
-    def trenutna_pozicija(self):
-        return self.x, self.y
+

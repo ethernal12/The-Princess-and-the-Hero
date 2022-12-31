@@ -13,12 +13,11 @@ class Console():
         self.maxKoraki = 5
         self.rezultat = 0
 
-
     def new_game(self):
         barabe: list[Baraba] = []
         stBarab = self.level * 2
-        sirina = 15 - self.level
-        visina = 15 - self.level
+        sirina = 10 - self.level
+        visina = 10 - self.level
         self.maxKoraki = 5
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
@@ -83,7 +82,7 @@ class Console():
         global dy
         self.maxKoraki -= 1
 
-        x, y = self.zemlja.hero.trenutna_pozicija()
+        x, y = self.zemlja.hero.x, self.zemlja.hero.y
 
         while True:
             uporabniskiInput = input('\033[92mVnesi dx med +2 in -2:\033[0m ')
@@ -132,19 +131,20 @@ class Console():
         for b in self.zemlja.barabe:
             trenutnePozicijeBarab.remove((b.x, b.y))
             b.nakljucno_gibanje()
-            x, y = b.trenutna_pozicija()
-
+            x, y = b.x, b.y
+            # če naslednja naključna pozicija barabe že obstaja, ponovno izneri pozicijo
             while (x, y) in trenutnePozicijeBarab:
                 b.nakljucno_gibanje()
-                x, y = b.trenutna_pozicija()
+                x, y = b.x, b.y
             trenutnePozicijeBarab.append((x, y))
 
     def end_game_loose(self):
-        xh, yh = self.zemlja.hero.trenutna_pozicija()
-        xp, yp = self.zemlja.princeska.trenutna_pozicija()
+        xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
+        xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
+
 
         for b in self.zemlja.barabe:
-            xb, yb = b.trenutna_pozicija()
+            xb, yb = b.x, b.y
             # pogoji za konec igre
             if yh == yb and xb in range(xh - 1, xh + 2):
                 print('\033[31mHeroj ujet!Konec igre...\033[0m')
@@ -164,18 +164,19 @@ class Console():
                 return True
 
     def end_game_win(self):
-        xh, yh = self.zemlja.hero.trenutna_pozicija()
-        xp, yp = self.zemlja.princeska.trenutna_pozicija()
+        xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
+        xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
 
         if xh == xp and yh == yp:
             self.level += 1
             self.rezultat += self.maxKoraki * 2
             if self.level > 7:
                 print(
-                    f'\033[33mČestitke, končali ste igro, princesa in heroj živit srečno skupaj vse do konca svojih dni!\033[0m')
+                    f'\033[33mČestitke, končali ste igro, princesa in heroj živita srečno skupaj vse do konca svojih dni!\033[0m')
                 print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
                 return True
             else:
+                # bug : če pride do princeske ne premikaj več barab, oziroma draw new game()
                 print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
                 return False
 
