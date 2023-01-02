@@ -1,0 +1,227 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: C:\The-Princess-and-the-Hero
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 166
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 24
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 505
+    content: "\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\r\n\r\nTry the new cross-platform PowerShell https://aka.ms/pscore6\e]0;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
+  - delay: 10
+    content: "\e[25l\e[6;1H\e[?25h"
+  - delay: 86
+    content: 'PS C:\The-Princess-and-the-Hero> '
+  - delay: 1096
+    content: "\e[?25l"
+  - delay: 12
+    content: "\e[93mp\e[?25h"
+  - delay: 49
+    content: "\e[m\e[?25l"
+  - delay: 14
+    content: "\e[93m\bpy\e[?25h"
+  - delay: 250
+    content: "\e[m\e[?25l"
+  - delay: 15
+    content: "\e[93m\e[6;34Hpyt\e[?25h"
+  - delay: 206
+    content: "\e[m\e[?25l"
+  - delay: 11
+    content: "\e[93m\e[6;34Hpyth\e[?25h"
+  - delay: 103
+    content: "\e[m\e[?25l"
+  - delay: 20
+    content: "\e[93m\e[6;34Hpytho\e[?25h"
+  - delay: 488
+    content: "\e[m\e[?25l"
+  - delay: 13
+    content: "\e[93m\e[6;34Hpython\e[?25h"
+  - delay: 889
+    content: "\e[m\e[?25l"
+  - delay: 21
+    content: "\e[93m\e[6;34Hpython\e[m \e[?25h"
+  - delay: 160
+    content: "\e[?25l"
+  - delay: 12
+    content: "\e[93m\e[6;34Hpython\e[m s\e[?25h"
+  - delay: 84
+    content: "\e[?25l"
+  - delay: 10
+    content: "\e[93m\e[6;34Hpython\e[m sr\e[?25h"
+  - delay: 256
+    content: "\e[?25l"
+  - delay: 23
+    content: "\e[93m\e[6;34Hpython\e[m src\e[?25h"
+  - delay: 575
+    content: "\r\n"
+  - delay: 64
+    content: "draw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[19X\e[1m\e[93m\r\nSCORE 0 \e[m\e[18X\r\n---------\e[17X\e[1m\e[93m\r\nPreostali koraki 5 \e[m       \r\n-------------------       \r\n. . . . . \e[91mB\e[m . . . . . . . \r\n. . . . . . . . . . \e[91mB\e[m . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . \e[92mH\e[m . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . ♥ . . \r\n. . . . . . . . . . . . .\r"
+  - delay: 16
+    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
+  - delay: 2878
+    content: '2'
+  - delay: 215
+    content: "\r\n"
+  - delay: 18
+    content: "\e[92mVnesi dy med +2 in -2:\e[m "
+  - delay: 190
+    content: '2'
+  - delay: 254
+    content: "\r\ndraw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 0 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 4 \e[m\e[K\r\n-------------------\r\n. . . . . . . . . . . . .\r\n. . . \e[91mB\e[m . . . . . . \e[91mB\e[m . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . ♥ . .\r\n. . . . . . . . . . . . .\r"
+  - delay: 5
+    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
+  - delay: 889
+    content: '2'
+  - delay: 215
+    content: "\r\n"
+  - delay: 16
+    content: "\e[92mVnesi dy med +2 in -2:\e[m "
+  - delay: 190
+    content: '2'
+  - delay: 281
+    content: "\r\ndraw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 0 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 3 \e[m\e[K\r\n-------------------\r\n. . . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . \e[92mH\e[m . . . .\e[K\r\n. . . . . . . . . . ♥ . .\r\n. . . . . . . . . . . . .\r"
+  - delay: 10
+    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
+  - delay: 2778
+    content: '2'
+  - delay: 213
+    content: "\r\n"
+  - delay: 11
+    content: "\e[92mVnesi dy med +2 in -2:\e[m "
+  - delay: 798
+    content: '1'
+  - delay: 339
+    content: "\r\n\e[32mPrinceska rešena...greš v naslednji nivo\r\e[m\ndraw game\r\n\e[1m\e[93m2 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 4 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 5 \e[m\e[K\r\n-------------------\r\n. . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . \e[91mB\e[m . . . .\e[K\r\n. . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . ♥ . . .\r\n. . . . . . . . . . \e[91mB\e[m .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r"
+  - delay: 17
+    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
+  - delay: 1770
+    content: q
+  - delay: 492
+    content: "\r\n"
+  - delay: 18
+    content: 'PS C:\The-Princess-and-the-Hero> '
+  - delay: 766
+    content: "\e[?25l"
+  - delay: 9
+    content: "\e[93me\e[?25h"
+  - delay: 252
+    content: "\e[m\e[?25l"
+  - delay: 12
+    content: "\e[93m\bex\e[?25h"
+  - delay: 110
+    content: "\e[m\e[?25l"
+  - delay: 14
+    content: "\e[93m\e[24;34Hexi\e[?25h"
+  - delay: 157
+    content: "\e[m\e[?25l"
+  - delay: 13
+    content: "\e[92m\e[24;34Hexit\e[?25h"
+  - delay: 142
+    content: "\e[25l\e[m\e[92m\e[HVnesi dx med +2 in -2:\e[m 2\e[K\e[92m\r\nVnesi dy med +2 in -2:\e[m 1\e[K\e[32m\r\nPrinceska rešena...greš v naslednji nivo\e[m\e[K\r\ndraw game\e[K\e[1m\e[93m\r\n2 LEVEL\e[m\e[K\e[1m\e[93m\r\nSCORE 4 \e[m\e[K\r\n---------\e[K\e[1m\e[93m\r\nPreostali koraki 5 \e[m\e[K\r\n-------------------\e[K\r\n. . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . \e[91mB\e[m . . . .\e[K\r\n. . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . ♥ . . .\e[K\r\n. . . . . . . . . . \e[91mB\e[m .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\e[92m\r\nVnesi dx med +2 in -2:\e[m q\e[K\r\nPS C:\\The-Princess-and-the-Hero> \e[92mexit\e[m\e[K\r\n\e[K\e[37C\e[?25h"
+  - delay: 15
+    content: "\r"
