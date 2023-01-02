@@ -2,7 +2,8 @@
 ### Konfiguracije igre:
 
 * Demo GIF igre: 
-* <img src="https://github.com/ethernal12/The-Princess-and-the-Hero/blob/implement_end_game_logic/game_demo.gif" width="300" height="300">
+
+<img src="https://github.com/ethernal12/The-Princess-and-the-Hero/blob/implement_end_game_logic/game_demo.gif" width="300" height="300">
 
 * Kloniraj REPO in v root direktoriju zaženi \__main__.py z ukazom: 
 ~~~
