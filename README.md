@@ -1,7 +1,7 @@
 # The Princess and the Hero
 ### Konfiguracije igre:
 
-* Demo GIF igre: ![Demo of Princess and the Hero](https://github.com/ethernal12/The-Princess-and-the-Hero/tree/implement_end_game_logic/game_demo.gif)
+* Demo GIF igre: ![Demo of Princess and the Hero](https://github.com/ethernal12/The-Princess-and-the-Hero/blob/implement_end_game_logic/game_demo.gif)
 
 * Kloniraj REPO in v root direktoriju zaženi \__main__.py z ukazom: 
 ~~~
