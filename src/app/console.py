@@ -2,35 +2,87 @@ from dataclasses import dataclass
 
 import random
 import sys
+from enum import Enum
+
+
+class GameStates(Enum):
+    HEROJ_UJET = "heroj_ujet"
+    PRINCESA_UJETA = "princeska_ujeta"
+    KORAKI_PRESEZENI = "koraki_preseženi"
+    ZMAGA = "zmaga_končaj_igro"
+    NASLEDNJI_NIVO = "naslednji_nivo"
+    EXIT_GAME = 'q'
+    MAX_KORAKI = 5
+    REZULTAT = 0
+    ST_BARAB = 2
+    HITROST_BARABE = 2
+    SIRINA_ZEMLJE = 13
+    VISINA_ZEMLJE = 13
+    KONCNI_LEVEL = 8
 
 
 @dataclass
-class Console():
-    def __init__(self):
+class Console:
+    zemlja: object = None
+    level: int = 1
+    maxKoraki: int = GameStates.MAX_KORAKI.value
+    rezultat: int = GameStates.REZULTAT.value
+    global result
 
-        self.zemlja = None
-        self.level = 1
-        self.maxKoraki = 5
-        self.rezultat = 0
+    def end_game_conditions(self):
+        xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
+        xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
+
+        if xh == xp and yh == yp:
+            self.level += 1
+            self.rezultat += self.maxKoraki * GameStates.ST_BARAB.value
+            if self.level > GameStates.KONCNI_LEVEL.value:
+                print(
+                    f'\033[33mČestitke, končali ste igro, princesa in heroj živita srečno skupaj vse do konca svojih dni!\033[0m')
+                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return GameStates.ZMAGA.value
+            else:
+                # bug : če pride do princeske ne premikaj več barab, oziroma draw new game()
+                print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
+                return GameStates.NASLEDNJI_NIVO.value
+
+        for b in self.zemlja.barabe:
+            xb, yb = b.x, b.y
+
+            if yh == yb and xb in range(xh - 1, xh + 2):
+                print('\033[31mHeroj ujet!Konec igre...\033[0m')
+                print(
+                    f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return GameStates.HEROJ_UJET.value
+            elif xh == xb and yb in range(yh - 1, yh + 2):
+                print('\033[31mHeroj ujet!Konec igre...\033[0m')
+                print(
+                    f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return GameStates.HEROJ_UJET.value
+            elif xb == xp and yb == yp:
+                print('\033[31mBaraba ujela princesko!Konec igre...\033[0m')
+                print(
+                    f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return GameStates.PRINCESA_UJETA.value
+            elif self.maxKoraki == 0:
+                print('\033[31mPresegli ste določeno število potez, igre konec!\033[0m')
+                print(
+                    f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
+                return GameStates.KORAKI_PRESEZENI.value
 
     def new_game(self):
         barabe: list[Baraba] = []
-        stBarab = self.level * 2
-        sirina = 13 - self.level
-        visina = 13 - self.level
-        self.maxKoraki = 5
+        stBarab = self.level * GameStates.ST_BARAB.value
+        sirina = GameStates.SIRINA_ZEMLJE.value - self.level
+        visina = GameStates.VISINA_ZEMLJE.value - self.level
+        self.maxKoraki = GameStates.MAX_KORAKI.value
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
 
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
             x, y = random.choice(moznePozicije)
-            barabe.append(
-                Baraba(
-                    x=x,
-                    y=y,
-                    hitrost=2)
-            )
+            barabe.append(Baraba(x=x, y=y, hitrost=GameStates.HITROST_BARABE.value))
             # vsakic odstrani pozicijo barabe iz moznih pozicij
             moznePozicije.remove((x, y))
         # izberi pozicije za heroja in princesko
@@ -76,7 +128,8 @@ class Console():
                     print('. ', end='')
             print()
 
-    # premik heroja z inputi
+        # premik heroja z inputi
+
     def input(self):
         global dx
         global dy
@@ -84,7 +137,8 @@ class Console():
 
         x, y = self.zemlja.hero.x, self.zemlja.hero.y
 
-        while True:
+        input_koncan = False
+        while not input_koncan:
             uporabniskiInput = input('\033[92mVnesi dx med +2 in -2:\033[0m ')
             if uporabniskiInput == "q":
                 sys.exit()
@@ -93,21 +147,19 @@ class Console():
                 if not (-2 <= dx <= 2):
                     print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dx.\033[0m')
                 else:
-                    break
+                    uporabniskiInput = input('\033[92mVnesi dy med +2 in -2:\033[0m ')
+                    if uporabniskiInput == GameStates.EXIT_GAME.value:
+                        sys.exit()
+                    try:
+                        dy = int(uporabniskiInput)
+                        if not (-2 <= dy <= 2):
+                            print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dy.\033[0m')
+                        else:
+                            input_koncan = True
+                    except ValueError:
+                        print('\033[31mProsim vnesite številko dy med +2 in -2.\033[0m')
             except ValueError:
                 print('\033[31mProsim vnesite številko dx med +2 in -2.\033[0m')
-        while True:
-            uporabniskiInput = input('\033[92mVnesi dy med +2 in -2:\033[0m ')
-            if uporabniskiInput == "q":
-                sys.exit()
-            try:
-                dy = int(uporabniskiInput)
-                if not (-2 <= dy <= 2):
-                    print('\033[31mVnesli se številko izven razpona, ponovno vnesite številko dy.\033[0m')
-                else:
-                    break
-            except ValueError:
-                print('\033[31mProsim vnesite številko dy med +2 in -2.\033[0m')
 
         # če si izven omejitve zemlje se heroj izriše na drugi strani
         if x + dx > self.zemlja.sirina:
@@ -119,10 +171,9 @@ class Console():
         elif y + dy < 0:
             self.zemlja.hero.y = y + dy + self.zemlja.visina + 1
         else:
-            self.zemlja.hero.premikanje(dx=dx, dy=dy)
+            self.zemlja.hero.premik(dx=dx, dy=dy)
 
     def premakni_barabo(self):
-
         trenutnePozicijeBarab = []
 
         for b in self.zemlja.barabe:
@@ -137,48 +188,6 @@ class Console():
                 b.nakljucno_gibanje()
                 x, y = b.x, b.y
             trenutnePozicijeBarab.append((x, y))
-
-    def end_game_loose(self):
-        xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
-        xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
-
-
-        for b in self.zemlja.barabe:
-            xb, yb = b.x, b.y
-            # pogoji za konec igre
-            if yh == yb and xb in range(xh - 1, xh + 2):
-                print('\033[31mHeroj ujet!Konec igre...\033[0m')
-                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-                return True
-            elif xh == xb and yb in range(yh - 1, yh + 2):
-                print('\033[31mHeroj ujet!Konec igre...\033[0m')
-                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-                return True
-            elif xb == xp and yb == yp:
-                print('\033[31mBaraba ujela princesko!Konec igre...\033[0m')
-                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-                return True
-            elif self.maxKoraki == 0:
-                print('\033[31mPresegli ste določeno število potez, igre konec!\033[0m')
-                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-                return True
-
-    def end_game_win(self):
-        xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
-        xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
-
-        if xh == xp and yh == yp:
-            self.level += 1
-            self.rezultat += self.maxKoraki * 2
-            if self.level > 7:
-                print(
-                    f'\033[33mČestitke, končali ste igro, princesa in heroj živita srečno skupaj vse do konca svojih dni!\033[0m')
-                print(f'\033[92mVaš končni SCORE: {self.rezultat} in prišli ste do LEVEL: {self.level}\033[0m')
-                return True
-            else:
-                # bug : če pride do princeske ne premikaj več barab, oziroma draw new game()
-                print('\033[32mPrinceska rešena...greš v naslednji nivo\033[0m')
-                return False
 
 
 # prestavil importe po izvajanju kode zaradi errorja 'circular import', kjer se moduli kličejo v loopu...

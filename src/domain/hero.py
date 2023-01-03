@@ -3,13 +3,11 @@ from dataclasses import dataclass
 
 @dataclass
 class Hero:
-    def __init__(self, x: int, y: int):
-        self.x = x
-        self.y = y
-        self.tocke = 0
+    x: int
+    y: int
+    tocke: int = 0
 
-    def premikanje(self, dx, dy):
+
+    def premik(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
-
-
