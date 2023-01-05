@@ -9,7 +9,7 @@ config:
   
   # Specify the current working directory path
   # the default is the current working directory path
-  cwd: C:\The-Princess-and-the-Hero
+  cwd: C:\Users\korba\PycharmProjects\heroAnBadGuys
   
   # Export additional ENV variables
   env:
@@ -18,12 +18,12 @@ config:
   # Explicitly set the number of columns
   # or use `auto` to take the current
   # number of columns of your shell
-  cols: 60
+  cols: 184
   
   # Explicitly set the number of rows
   # or use `auto` to take the current
   # number of rows of your shell
-  rows: 24
+  rows: 16
   
   # Amount of times to repeat GIF
   # If value is -1, play once
@@ -66,7 +66,7 @@ config:
       position: absolute
       right: 15px
       bottom: 15px
-      width: 50px
+      width: 100px
       opacity: 0.9
   
   # Cursor style can be one of
@@ -111,117 +111,111 @@ config:
   
 # Records, feel free to edit them
 records:
-  - delay: 505
-    content: "\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\r\n\r\nTry the new cross-platform PowerShell https://aka.ms/pscore6\e]0;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
-  - delay: 10
-    content: "\e[25l\e[6;1H\e[?25h"
-  - delay: 86
-    content: 'PS C:\The-Princess-and-the-Hero> '
-  - delay: 1096
-    content: "\e[?25l"
-  - delay: 12
-    content: "\e[93mp\e[?25h"
-  - delay: 49
-    content: "\e[m\e[?25l"
-  - delay: 14
-    content: "\e[93m\bpy\e[?25h"
-  - delay: 250
-    content: "\e[m\e[?25l"
-  - delay: 15
-    content: "\e[93m\e[6;34Hpyt\e[?25h"
-  - delay: 206
-    content: "\e[m\e[?25l"
+  - delay: 633
+    content: "\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[4;1HInstall the latest PowerShell for new features and improvements! https://aka.ms/PSWindows\e]0;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
   - delay: 11
-    content: "\e[93m\e[6;34Hpyth\e[?25h"
-  - delay: 103
-    content: "\e[m\e[?25l"
-  - delay: 20
-    content: "\e[93m\e[6;34Hpytho\e[?25h"
-  - delay: 488
+    content: "\e[?25l\e[6;1H\e[?25h"
+  - delay: 111
+    content: 'PS C:\Users\korba\PycharmProjects\heroAnBadGuys> '
+  - delay: 875
+    content: "\e[?25l"
+  - delay: 17
+    content: "\e[93mp\e[?25h"
+  - delay: 18
     content: "\e[m\e[?25l"
   - delay: 13
-    content: "\e[93m\e[6;34Hpython\e[?25h"
-  - delay: 889
-    content: "\e[m\e[?25l"
-  - delay: 21
-    content: "\e[93m\e[6;34Hpython\e[m \e[?25h"
-  - delay: 160
-    content: "\e[?25l"
-  - delay: 12
-    content: "\e[93m\e[6;34Hpython\e[m s\e[?25h"
-  - delay: 84
-    content: "\e[?25l"
-  - delay: 10
-    content: "\e[93m\e[6;34Hpython\e[m sr\e[?25h"
-  - delay: 256
-    content: "\e[?25l"
-  - delay: 23
-    content: "\e[93m\e[6;34Hpython\e[m src\e[?25h"
-  - delay: 575
-    content: "\r\n"
-  - delay: 64
-    content: "draw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[19X\e[1m\e[93m\r\nSCORE 0 \e[m\e[18X\r\n---------\e[17X\e[1m\e[93m\r\nPreostali koraki 5 \e[m       \r\n-------------------       \r\n. . . . . \e[91mB\e[m . . . . . . . \r\n. . . . . . . . . . \e[91mB\e[m . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . \e[92mH\e[m . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . ♥ . . \r\n. . . . . . . . . . . . .\r"
-  - delay: 16
-    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
-  - delay: 2878
-    content: '2'
-  - delay: 215
-    content: "\r\n"
-  - delay: 18
-    content: "\e[92mVnesi dy med +2 in -2:\e[m "
-  - delay: 190
-    content: '2'
+    content: "\e[93m\bpy\e[?25h"
   - delay: 254
-    content: "\r\ndraw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 0 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 4 \e[m\e[K\r\n-------------------\r\n. . . . . . . . . . . . .\r\n. . . \e[91mB\e[m . . . . . . \e[91mB\e[m . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . ♥ . .\r\n. . . . . . . . . . . . .\r"
-  - delay: 5
-    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
-  - delay: 889
-    content: '2'
-  - delay: 215
-    content: "\r\n"
-  - delay: 16
-    content: "\e[92mVnesi dy med +2 in -2:\e[m "
-  - delay: 190
-    content: '2'
-  - delay: 281
-    content: "\r\ndraw game\r\n\e[1m\e[93m1 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 0 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 3 \e[m\e[K\r\n-------------------\r\n. . . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . \e[92mH\e[m . . . .\e[K\r\n. . . . . . . . . . ♥ . .\r\n. . . . . . . . . . . . .\r"
-  - delay: 10
-    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
-  - delay: 2778
-    content: '2'
-  - delay: 213
-    content: "\r\n"
-  - delay: 11
-    content: "\e[92mVnesi dy med +2 in -2:\e[m "
-  - delay: 798
-    content: '1'
-  - delay: 339
-    content: "\r\n\e[32mPrinceska rešena...greš v naslednji nivo\r\e[m\ndraw game\r\n\e[1m\e[93m2 LEVEL\e[m\e[K\r\n\e[1m\e[93mSCORE 4 \e[m\e[K\r\n---------\r\n\e[1m\e[93mPreostali koraki 5 \e[m\e[K\r\n-------------------\r\n. . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . \e[91mB\e[m . . . .\e[K\r\n. . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . ♥ . . .\r\n. . . . . . . . . . \e[91mB\e[m .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r"
-  - delay: 17
-    content: "\n\e[92mVnesi dx med +2 in -2:\e[m\e[K\e[1C"
-  - delay: 1770
-    content: q
-  - delay: 492
-    content: "\r\n"
-  - delay: 18
-    content: 'PS C:\The-Princess-and-the-Hero> '
-  - delay: 766
-    content: "\e[?25l"
-  - delay: 9
-    content: "\e[93me\e[?25h"
-  - delay: 252
     content: "\e[m\e[?25l"
   - delay: 12
-    content: "\e[93m\bex\e[?25h"
+    content: "\e[93m\e[6;50Hpyt\e[?25h"
+  - delay: 176
+    content: "\e[m\e[?25l"
+  - delay: 11
+    content: "\e[93m\e[6;50Hpyth\e[?25h"
   - delay: 110
     content: "\e[m\e[?25l"
   - delay: 14
-    content: "\e[93m\e[24;34Hexi\e[?25h"
-  - delay: 157
+    content: "\e[93m\e[6;50Hpytho\e[?25h"
+  - delay: 232
     content: "\e[m\e[?25l"
+  - delay: 16
+    content: "\e[93m\e[6;50Hpython\e[?25h"
+  - delay: 160
+    content: "\e[m\e[?25l"
+  - delay: 12
+    content: "\e[93m\e[6;50Hpython \e[?25h"
+  - delay: 123
+    content: "\e[m\e[?25l"
+  - delay: 11
+    content: "\e[93m\e[6;50Hpython \e[ms\e[?25h"
+  - delay: 103
+    content: "\e[?25l"
+  - delay: 21
+    content: "\e[93m\e[6;50Hpython \e[msr\e[?25h"
+  - delay: 245
+    content: "\e[?25l"
+  - delay: 19
+    content: "\e[93m\e[6;50Hpython \e[msrc\e[?25h"
+  - delay: 651
+    content: "\r\n"
+  - delay: 166
+    content: "♥  ♥  ♥ \r\n"
+  - delay: 28
+    content: "\e[38;5;220m1 LEVEL\r\nSCORE 0\e[m\r\n---------\e[38;5;220m\r\nPreostali koraki 10\e[m\r\n-------------------\r\n. . . . . \e[38;5;10mH \e[m. . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . ♀ . . . . . . . . . \r\n. . . . . . . . . . . . . \r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. . . . . . \e[38;5;196mB \e[m. . . . . . \r\n. . . . . . . . . . . . .\r\n. . . . . . . . . . . . .\r\n. \e[38;5;196mB \e[m. . . . . . . . . . .\e[K\r\n. . . . . . . . . . . . .\r"
   - delay: 13
-    content: "\e[92m\e[24;34Hexit\e[?25h"
-  - delay: 142
-    content: "\e[25l\e[m\e[92m\e[HVnesi dx med +2 in -2:\e[m 2\e[K\e[92m\r\nVnesi dy med +2 in -2:\e[m 1\e[K\e[32m\r\nPrinceska rešena...greš v naslednji nivo\e[m\e[K\r\ndraw game\e[K\e[1m\e[93m\r\n2 LEVEL\e[m\e[K\e[1m\e[93m\r\nSCORE 4 \e[m\e[K\r\n---------\e[K\e[1m\e[93m\r\nPreostali koraki 5 \e[m\e[K\r\n-------------------\e[K\r\n. . \e[91mB\e[m . . . . . . . . .\e[K\r\n. . . . . . . \e[91mB\e[m . . . .\e[K\r\n. . . . . \e[92mH\e[m . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . ♥ . . .\e[K\r\n. . . . . . . . . . \e[91mB\e[m .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . \e[91mB\e[m . . .\e[K\r\n. . . . . . . . . . . .\e[K\r\n. . . . . . . . . . . .\e[K\e[92m\r\nVnesi dx med +2 in -2:\e[m q\e[K\r\nPS C:\\The-Princess-and-the-Hero> \e[92mexit\e[m\e[K\r\n\e[K\e[37C\e[?25h"
-  - delay: 15
-    content: "\r"
+    content: "\n\e[38;5;10mVnesi dx med +2 in -2:"
+  - delay: 2217
+    content: "\e[m-"
+  - delay: 798
+    content: '2'
+  - delay: 653
+    content: "\r\n"
+  - delay: 11
+    content: "\e[38;5;10mVnesi dy med +2 in -2:"
+  - delay: 1122
+    content: "\e[m2"
+  - delay: 261
+    content: "\r\n\e[38;5;10mPrinceska rešena...greš v naslednji nivo\r\n♥  ♥  ♥\r\e[m\n\e[38;5;220m2 LEVEL\r\e[m\n\e[38;5;220mSCORE 18\r\e[m\n---------\r\n\e[38;5;220mPreostali koraki 10\r\e[m\n-------------------\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . ♀ . . . . .\r\n. . . . . . . . . . . .\r\n. . . \e[38;5;196mB \e[38;5;10mH \e[m. . . . . . .\e[K\r\n. . \e[38;5;196mB \e[m. . . . . . \e[38;5;196mB \e[m. .\e[K\r\n. . . . . . . . . \e[38;5;196mB \e[m. .\e[K\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r\n. . . . . . . . . . . .\r"
+  - delay: 9
+    content: "\n\e[38;5;10mVnesi dx med +2 in -2:"
+  - delay: 2310
+    content: "\e[m2"
+  - delay: 234
+    content: "\r\n"
+  - delay: 11
+    content: "\e[38;5;10mVnesi dy med +2 in -2:"
+  - delay: 1512
+    content: "\e[m-"
+  - delay: 331
+    content: '2'
+  - delay: 379
+    content: "\r\n\e[38;5;10mPrinceska rešena...greš v naslednji nivo\r\n♥  ♥  ♥\r\e[m\n\e[38;5;220m3 LEVEL\r\e[m\n\e[38;5;220mSCORE 36\r\e[m\n---------\r\n\e[38;5;220mPreostali koraki 10\r\e[m\n-------------------\r\n. \e[38;5;196mB \e[m. . . \e[38;5;10mH \e[m. . . . .\e[K\r\n. . . . . . . . . . .\r\n. . . . . . \e[38;5;196mB \e[m. . . .\e[K\r\n. . . . . . . . . . .\r\n. . . . . . . . . \e[38;5;196mB \e[m.\e[K\r\n. . . . \e[38;5;196mB \e[m. . . . . .\e[K\r\n. . . . . . . . . ♀ .\r\n. . . . . . . . . . .\r\n. . . . \e[38;5;196mB \e[m. . \e[38;5;196mB \e[m. . .\e[K\r\n. . . . . . . . . . .\r\n. . . . . . . . . . .\r"
+  - delay: 10
+    content: "\n\e[38;5;10mVnesi dx med +2 in -2:"
+  - delay: 1727
+    content: "\e[mq"
+  - delay: 592
+    content: "\r\n"
+  - delay: 29
+    content: 'PS C:\Users\korba\PycharmProjects\heroAnBadGuys> '
+  - delay: 1200
+    content: "\e[?25l"
+  - delay: 21
+    content: "\e[93me\e[?25h"
+  - delay: 217
+    content: "\e[m\e[?25l"
+  - delay: 16
+    content: "\e[93m\bex\e[?25h"
+  - delay: 127
+    content: "\e[m\e[?25l"
+  - delay: 12
+    content: "\e[93m\e[16;50Hexi\e[?25h"
+  - delay: 177
+    content: "\e[m\e[?25l"
+  - delay: 10
+    content: "\e[92m\e[16;50Hexit\e[?25h"
+  - delay: 321
+    content: "\e[m"
+  - delay: 24
+    content: "\r\n"
