@@ -1,23 +1,15 @@
 import random
 from dataclasses import dataclass
 
-from src.app.console import Console
-
-
 @dataclass
 class Baraba():
     x: int
     y: int
     hitrost: int
+    sirina: int
+    visina: int
 
     def nakljucno_gibanje(self):
-
-        console = Console()
-        # pokličemo new_game v Console class
-        console.new_game()
-        # Dostopimo do zemlja instance in atributa sirina/visina
-        sirina = console.zemlja.sirina
-        visina = console.zemlja.visina
 
         global nalkjucniX
         global nalkjucniY
@@ -28,11 +20,11 @@ class Baraba():
             naslednjaPozicijaX = self.x + nalkjucniX
             naslednjaPozicijaY = self.y + nalkjucniY
 
-            if naslednjaPozicijaX < 0 or naslednjaPozicijaX > sirina:
+            if naslednjaPozicijaX < 0 or naslednjaPozicijaX > self.sirina:
 
                 nalkjucniX = random.randint(-self.hitrost, self.hitrost)
 
-            elif naslednjaPozicijaY < 0 or naslednjaPozicijaY > visina:
+            elif naslednjaPozicijaY < 0 or naslednjaPozicijaY > self.visina:
 
                 nalkjucniY = random.randint(-self.hitrost, self.hitrost)
             else:

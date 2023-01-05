@@ -2,6 +2,7 @@
 import sys
 import os
 
+
 # adding directory to python path
 sys.path.append(os.getcwd())
 
@@ -14,7 +15,7 @@ console.new_game()
 while True:
     console.draw_game()
     console.input()
-    console.premakni_barabo()
+    console.zemlja.premakni_barabo()
     result = console.end_game_conditions()
     match result:
         case 'heroj_ujet':
