@@ -7,9 +7,7 @@ class Hero:
     y: int
     tocke: int = 0
     st_zivljenj: int = 3
-    zivljenja_list = []
-    for i in range(st_zivljenj):
-        zivljenja_list.append('\u2665 ')
+    zivljenja_list = ['\u2665 ' for _ in range(st_zivljenj)]
 
     def premik(self, dx, dy):
         self.x = self.x + dx

@@ -12,6 +12,8 @@ class Zemlja:
     hero: Hero
     princeska: Princeska
     barabe: list[Baraba]
+    dx: int
+    dy: int
 
     def premakni_barabo(self):
         trenutnePozicijeBarab = []
@@ -29,3 +31,18 @@ class Zemlja:
                 x, y = b.x, b.y
             trenutnePozicijeBarab.append((x, y))
 
+    # če si izven omejitve zemlje se heroj izriše na drugi strani
+    def premakni_heroja(self, dx, dy):
+        x = self.hero.x
+        y = self.hero.y
+
+        if x + dx > self.sirina:
+            self.hero.x = x + dx - self.sirina - 1
+        elif x + self.dx < 0:
+            self.hero.x = x + dx + self.sirina + 1
+        elif y + dy > self.visina:
+            self.hero.y = y + dy - self.visina - 1
+        elif y + dy < 0:
+            self.hero.y = y + dy + self.visina + 1
+        else:
+            self.hero.premik(dx=dx, dy=dy)
