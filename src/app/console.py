@@ -13,7 +13,7 @@ class Console:
     level: int = GameConfig.LEVEL_INICIALIZACIJA.value
     maxKoraki: int = GameConfig.MAX_KORAKI.value
     rezultat: int = GameConfig.REZULTAT.value
-# end game
+# end game con
     def end_game_conditions(self):
         xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
         xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
