@@ -7,14 +7,13 @@ from src.app.config import GameConfig
 from src.app.game_messages import messages
 import random
 
-
 @dataclass
 class Console:
     zemlja: Zemlja = None
     level: int = GameConfig.LEVEL_INICIALIZACIJA.value
     maxKoraki: int = GameConfig.MAX_KORAKI.value
     rezultat: int = GameConfig.REZULTAT.value
-
+# end game con
     def end_game_conditions(self):
         xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
         xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
@@ -66,7 +65,7 @@ class Console:
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
             x, y = random.choice(moznePozicije)
-            barabe.append(Baraba(x=x, y=y, hitrost=GameConfig.HITROST_BARABE.value, sirina=sirina, visina=visina))
+            barabe.append(Baraba(x=x, y=y, hitrost=GameConfig.HITROST_BARABE.value, visina=visina, sirina=sirina))
             # vsakic odstrani pozicijo barabe iz moznih pozicij
             moznePozicije.remove((x, y))
         # izberi pozicije za heroja in princesko
