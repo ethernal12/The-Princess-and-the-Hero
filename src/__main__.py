@@ -2,7 +2,7 @@ import sys
 import os
 from app.config import GameConfig
 
-# adding directory to python path!
+# adding directory to python path
 sys.path.append(os.getcwd())
 
 from src.app.console import Console
