@@ -26,7 +26,7 @@ while True:
                     break
                 case GameConfig.PRINCESA_UJETA.value:
                     break
-                case GameConfig.ZMAGA:
+                case GameConfig.ZMAGA.value:
                     break
                 case GameConfig.KORAKI_PRESEZENI.value:
                     break

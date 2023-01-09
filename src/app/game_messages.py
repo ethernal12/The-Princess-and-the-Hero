@@ -1,5 +1,5 @@
 from colored import fg, attr
-
+from src.app.config import GameConfig
 
 def messages(instance, game_condition):
     konec_igre = f'{fg("light_green")}Vaš končni SCORE: {instance.rezultat} in prišli ste do LEVEL: {instance.level}{attr(0)}'
@@ -28,12 +28,12 @@ def messages(instance, game_condition):
             print('---------')
             print(f'{fg("gold_1")}Preostali koraki {instance.maxKoraki}{attr(0)}')
             print('-------------------')
-        case 'simbol_barab':
+        case 'barabe':
             print(fg('red_1') + 'B ' + attr('reset'), end='')
-        case 'simbol_heroja':
+        case 'heroja':
             print(fg('light_green') + 'H ' + attr('reset'), end='')
-        case 'simbol_princeske':
-            print('\u2640 ', end='')
+        case 'princeska':
+            print(GameConfig.SIMBOL_PRINCESKE.value, end='')
         case 'input_izven_razpone':
             print(fg('red_1') + 'Vnesli se številko izven razpona, ponovno vnesite številko dx.' + attr('reset'))
         case 'input_ni_stevilka':
@@ -44,4 +44,9 @@ def messages(instance, game_condition):
             return input(fg('light_green') + 'Vnesi dx med +2 in -2:' + attr('reset'))
         case 'input_sporocilo_dy':
             return input(fg('light_green') + 'Vnesi dy med +2 in -2:' + attr('reset'))
-
+        case 'border_top_bottom':
+            print(fg(GameConfig.BORDER_COLOR.value) + "+ " + "- " * (instance.zemlja.sirina + 1) + "+" + attr("reset"))
+        case 'border_left':
+            print(fg(GameConfig.BORDER_COLOR.value) + "|" + attr("reset"), end=" ")
+        case 'border_right':
+            print(fg(GameConfig.BORDER_COLOR.value) + "|" + attr("reset"))

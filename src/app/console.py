@@ -5,7 +5,9 @@ from src.domain.hero import Hero
 from src.domain.princeska import Princeska
 from src.app.config import GameConfig
 from src.app.game_messages import messages
+from colored import fg, attr
 import random
+
 
 @dataclass
 class Console:
@@ -13,7 +15,8 @@ class Console:
     level: int = GameConfig.LEVEL_INICIALIZACIJA.value
     maxKoraki: int = GameConfig.MAX_KORAKI.value
     rezultat: int = GameConfig.REZULTAT.value
-# end game con
+
+    # end game con
     def end_game_conditions(self):
         xh, yh = self.zemlja.hero.x, self.zemlja.hero.y
         xp, yp = self.zemlja.princeska.x, self.zemlja.princeska.y
@@ -91,23 +94,26 @@ class Console:
 
     def draw_game(self):
         messages(self, GameConfig.PODATKI_IGRE)
+        messages(self, GameConfig.BORDER_TOP_BOTTOM)
         for y in range(self.zemlja.visina + 1):
+            messages(self, GameConfig.BORDER_LEFT)
             for x in range(self.zemlja.sirina + 1):
                 flag = False
                 for b in self.zemlja.barabe:
                     if b.x == x and b.y == y:
-                        messages(self, GameConfig.SIMBOL_BARAB)
+                        messages(self, GameConfig.PRINT_BARABO)
                         flag = True
                         break
                 if flag:
                     continue
                 if x == self.zemlja.hero.x and y == self.zemlja.hero.y:
-                    messages(self, GameConfig.SIMBOL_HEROJA)
+                    messages(self, GameConfig.PRINT_HEROJA)
                 elif x == self.zemlja.princeska.x and y == self.zemlja.princeska.y:
-                    messages(self, GameConfig.SIMBOL_PRINCESKE)
+                    messages(self, GameConfig.PRINT_PRINCESKE)
                 else:
                     messages(self, GameConfig.NARISI_PIKO)
-            print()
+            messages(self, GameConfig.BORDER_RIGHT)
+        messages(self, GameConfig.BORDER_TOP_BOTTOM)
 
     def input(self):
         self.maxKoraki -= GameConfig.KORAKI_DEKREMENT.value
@@ -120,7 +126,7 @@ class Console:
             try:
                 dx = int(uporabniskiInput)
                 if not dx in range(-GameConfig.HITROST_HEROJA.value, GameConfig.HITROST_HEROJA.value + 1):
-                    messages(self, GameConfig.INPUT_IZVEN_RAZPONE)
+                    messages(self, GameConfig.ERROR_INPUT_IZVEN_RAZPONE)
                 else:
                     uporabniskiInput = messages(self, GameConfig.INPUT_SPOROCILO_DY)
                     if uporabniskiInput == GameConfig.EXIT_GAME_INPUT.value:
@@ -128,14 +134,14 @@ class Console:
                     try:
                         dy = int(uporabniskiInput)
                         if not dy in range(-GameConfig.HITROST_HEROJA.value, GameConfig.HITROST_HEROJA.value + 1):
-                            messages(self, GameConfig.INPUT_IZVEN_RAZPONE)
+                            messages(self, GameConfig.ERROR_INPUT_IZVEN_RAZPONE)
                         else:
                             input_koncan = True
                     except ValueError:
-                        messages(self, GameConfig.INPUT_NI_STEVILKA)
+                        messages(self, GameConfig.ERROR_INPUT_NI_STEVILKA)
 
             except ValueError:
-                messages(self, GameConfig.INPUT_NI_STEVILKA)
+                messages(self, GameConfig.ERROR_INPUT_NI_STEVILKA)
 
         self.zemlja.premakni_heroja(dx, dy)
         return GameConfig.NADALJUJ_ZANKO
