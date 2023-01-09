@@ -1,8 +1,9 @@
 import random
 from dataclasses import dataclass
 
+
 @dataclass
-class Baraba():
+class Baraba:
     x: int
     y: int
     hitrost: int
@@ -19,7 +20,7 @@ class Baraba():
             nalkjucniY = random.randint(-self.hitrost, self.hitrost)
             naslednjaPozicijaX = self.x + nalkjucniX
             naslednjaPozicijaY = self.y + nalkjucniY
-
+            print(self.sirina)
             if naslednjaPozicijaX < 0 or naslednjaPozicijaX > self.sirina:
 
                 nalkjucniX = random.randint(-self.hitrost, self.hitrost)
@@ -32,5 +33,3 @@ class Baraba():
 
         self.x += nalkjucniX
         self.y += nalkjucniY
-
-

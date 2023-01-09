@@ -1,5 +1,6 @@
 import sys
 import os
+from app.config import GameConfig
 
 # adding directory to python path
 sys.path.append(os.getcwd())
@@ -13,26 +14,23 @@ while True:
     console.draw_game()
     exit_terminal = console.input()
     match exit_terminal.value:
-        case 'sys.exit()':
+        case GameConfig.EXIT_GAME_COMMAND.value:
             sys.exit()
-        case 'nadaljuj':
+        case GameConfig.NADALJUJ_ZANKO.value:
             # v primeru da so inputi validirani, ne morem uporabiti continue, ker mi štarta novo
             # iteracijo while loop-a, zato sem uporabil nested match case ¯\_(ツ)_/¯
             console.zemlja.premakni_barabo()
             result = console.end_game_conditions()
             match result.value:
-                case 'heroj_ujet':
+                case GameConfig.HEROJ_UJET.value:
                     break
-                case 'princeska_ujeta':
+                case GameConfig.PRINCESA_UJETA.value:
                     break
-                case 'zmaga_končaj_igro':
+                case GameConfig.ZMAGA:
                     break
-                case 'koraki_preseženi':
+                case GameConfig.KORAKI_PRESEZENI.value:
                     break
-                case 'naslednji_nivo':
+                case GameConfig.NASLEDNJI_NIVO.value:
                     console.new_game()
-                case 'nadaljuj':
+                case GameConfig.NADALJUJ_ZANKO.value:
                     continue
-
-
-
