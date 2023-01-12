@@ -5,7 +5,6 @@ from src.domain.hero import Hero
 from src.domain.princeska import Princeska
 from src.app.config import GameConfig
 from src.app.game_messages import messages
-from colored import fg, attr
 import random
 
 
@@ -52,7 +51,7 @@ class Console:
                     messages(self, GameConfig.PORAZ)
                     return GameConfig.HEROJ_UJET
                 break
-            elif self.maxKoraki == GameConfig.KORAKI_SPODNJA_MEJA:
+            elif self.maxKoraki == GameConfig.KORAKI_SPODNJA_MEJA.value:
                 messages(self, GameConfig.KORAKI_PRESEZENI)
                 return GameConfig.KORAKI_PRESEZENI
         return GameConfig.NADALJUJ_ZANKO
@@ -68,7 +67,7 @@ class Console:
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
             x, y = random.choice(moznePozicije)
-            barabe.append(Baraba(x=x, y=y, hitrost=GameConfig.HITROST_BARABE.value, visina=visina, sirina=sirina))
+            barabe.append(Baraba(x=x, y=y, hitrost=GameConfig.HITROST_BARABE.value))
             # vsakic odstrani pozicijo barabe iz moznih pozicij
             moznePozicije.remove((x, y))
         # izberi pozicije za heroja in princesko
@@ -116,7 +115,7 @@ class Console:
         messages(self, GameConfig.BORDER_TOP_BOTTOM)
 
     def input(self):
-        self.maxKoraki -= GameConfig.KORAKI_DEKREMENT.value
+
 
         input_koncan = False
         while not input_koncan:
@@ -142,6 +141,6 @@ class Console:
 
             except ValueError:
                 messages(self, GameConfig.ERROR_INPUT_NI_STEVILKA)
-
+        self.maxKoraki -= GameConfig.KORAKI_DEKREMENT.value
         self.zemlja.premakni_heroja(dx, dy)
         return GameConfig.NADALJUJ_ZANKO

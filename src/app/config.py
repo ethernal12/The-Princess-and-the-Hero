@@ -24,7 +24,7 @@ class GameConfig(Enum):
     BORDER_COLOR = 'light_cyan'
     ODDALJENOST_BARABE = 1
     HITROST_HEROJA = 2
-    MAX_KORAKI = 2
+    MAX_KORAKI = 100
     KORAKI_SPODNJA_MEJA = 0
     REZULTAT = 0
     ST_BARAB = 2

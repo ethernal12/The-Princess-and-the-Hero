@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from src.domain.baraba import Baraba
 from src.domain.hero import Hero
 from src.domain.princeska import Princeska
+import random
 
 
 @dataclass
@@ -20,14 +21,14 @@ class Zemlja:
 
         for b in self.barabe:
             trenutnePozicijeBarab.append((b.x, b.y))
-
         for b in self.barabe:
             trenutnePozicijeBarab.remove((b.x, b.y))
-            b.nakljucno_gibanje()
+            b.nakljucno_gibanje(self.visina, self.sirina)
+            # self.Baraba.nakljucno_gibanje_barabe(self.visina, self.sirina)
             x, y = b.x, b.y
             # če naslednja naključna pozicija barabe že obstaja, ponovno izberi pozicijo
             while (x, y) in trenutnePozicijeBarab:
-                b.nakljucno_gibanje()
+                b.nakljucno_gibanje(self.visina, self.sirina)
                 x, y = b.x, b.y
             trenutnePozicijeBarab.append((x, y))
 
@@ -38,11 +39,11 @@ class Zemlja:
 
         if x + dx > self.sirina:
             self.hero.x = x + dx - self.sirina - 1
-        elif x + self.dx < 0:
+        elif x + dx < 0:
             self.hero.x = x + dx + self.sirina + 1
         elif y + dy > self.visina:
             self.hero.y = y + dy - self.visina - 1
-        elif y + dy < 0:
+        elif y + dy <= 0:
             self.hero.y = y + dy + self.visina + 1
         else:
             self.hero.premik(dx=dx, dy=dy)
