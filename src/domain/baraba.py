@@ -6,7 +6,7 @@ class Baraba:
     x: int
     y: int
     hitrost: int
-A
+
     def nakljucno_gibanje(self, visina, sirina):
 
         global nalkjucniX
