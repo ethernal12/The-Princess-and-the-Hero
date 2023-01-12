@@ -116,7 +116,6 @@ class Console:
 
     def input(self):
 
-
         input_koncan = False
         while not input_koncan:
             uporabniskiInput = messages(self, GameConfig.INPUT_SPOROCILO_DX)

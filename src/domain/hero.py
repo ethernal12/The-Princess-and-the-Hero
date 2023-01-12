@@ -7,6 +7,8 @@ class Hero:
     y: int
     tocke: int = 0
     st_zivljenj: int = 3
+    # če uporabim post init za generiranje življenj heroju se mi pri vsaki new_game usvari ponovno 3 življenja,
+    # hočem pa da ima heroj na celotno igro 3 življenja
     zivljenja_list = ['\u2665 ' for _ in range(st_zivljenj)]
 
     def premik(self, dx, dy):
