@@ -6,6 +6,8 @@ class Baraba:
     x: int
     y: int
     hitrost: int
+    # TODO: pODREJENI ELEMENTI NE SMEJO PRI INICIALIZACIJI ALI PRI RUNTIMU VEDETI ZA VIŠNE ELEMENTE NITI NJIHOVE INFORMACIJE
+    # NALJKUČNI X = NONE
 
     def nakljucno_gibanje(self, visina, sirina):
 

@@ -47,3 +47,6 @@ class Zemlja:
             self.hero.y = y + dy + self.visina + 1
         else:
             self.hero.premik(dx=dx, dy=dy)
+
+
+    def

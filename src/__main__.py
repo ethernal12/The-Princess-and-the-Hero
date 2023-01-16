@@ -7,20 +7,20 @@ sys.path.append(os.getcwd())
 
 from src.app.console import Console
 
-console = Console()
-console.new_game()
+app = Console()
+app.new_game()
 
 while True:
-    console.draw_game()
-    exit_terminal = console.input()
+    app.draw_game()
+    exit_terminal = app.input()
     match exit_terminal.value:
         case GameConfig.EXIT_GAME_COMMAND.value:
             sys.exit()
         case GameConfig.NADALJUJ_ZANKO.value:
             # v primeru da so inputi validirani, ne morem uporabiti continue, ker mi štarta novo
             # iteracijo while loop-a, zato sem uporabil nested match case ¯\_(ツ)_/¯
-            console.zemlja.premakni_barabo()
-            result = console.end_game_conditions()
+            app.zemlja.premakni_barabo()
+            result = app.end_game_conditions()
             match result.value:
                 case GameConfig.HEROJ_UJET.value:
                     break
@@ -31,6 +31,6 @@ while True:
                 case GameConfig.KORAKI_PRESEZENI.value:
                     break
                 case GameConfig.NASLEDNJI_NIVO.value:
-                    console.new_game()
+                    app.new_game()
                 case GameConfig.NADALJUJ_ZANKO.value:
                     continue

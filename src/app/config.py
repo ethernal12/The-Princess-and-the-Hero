@@ -27,7 +27,7 @@ class GameConfig(Enum):
     MAX_KORAKI = 100
     KORAKI_SPODNJA_MEJA = 0
     REZULTAT = 0
-    ST_BARAB = 2
+    ST_BARAB = 5
     HITROST_BARABE = 2
     SIRINA_ZEMLJE = 13
     VISINA_ZEMLJE = 13
@@ -38,4 +38,8 @@ class GameConfig(Enum):
     BORDER_TOP_BOTTOM = 'border_top_bottom'
     BORDER_LEFT = 'border_left'
     BORDER_RIGHT = 'border_right'
+    PREMIK_DESNO = 'D'
+    PREMIK_LEVO = 'A'
+    PREMIK_GOR = 'W'
+    PREMIK_DOL = 'S'
 

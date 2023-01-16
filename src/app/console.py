@@ -1,4 +1,8 @@
+from ctypes import string_at
 from dataclasses import dataclass
+
+from pip._internal.utils.misc import enum
+
 from src.domain.baraba import Baraba
 from src.domain.zemlja import Zemlja
 from src.domain.hero import Hero
@@ -7,9 +11,12 @@ from src.app.config import GameConfig
 from src.app.game_messages import messages
 import random
 
+class Zanki:
+    HERO = 'h'
+    LIFE = ''
 
 @dataclass
-class Console:
+class Console():
     zemlja: Zemlja = None
     level: int = GameConfig.LEVEL_INICIALIZACIJA.value
     maxKoraki: int = GameConfig.MAX_KORAKI.value
