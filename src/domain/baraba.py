@@ -1,33 +1,23 @@
 import random
 from dataclasses import dataclass
 
+
 @dataclass
 class Baraba:
     x: int
     y: int
     hitrost: int
+
     # TODO: pODREJENI ELEMENTI NE SMEJO PRI INICIALIZACIJI ALI PRI RUNTIMU VEDETI ZA VIŠNE ELEMENTE NITI NJIHOVE INFORMACIJE
     # NALJKUČNI X = NONE
 
-    def nakljucno_gibanje(self, visina, sirina):
-
+    def nakljucno_gibanje(self):
         global nalkjucniX
         global nalkjucniY
-        # če izbere baraba naključno smer izven omejitev zemlje, ponovno izbere drugo naključno smer...
-        while True:
-            nalkjucniX = random.randint(-self.hitrost, self.hitrost)
-            nalkjucniY = random.randint(-self.hitrost, self.hitrost)
-            naslednjaPozicijaX = self.x + nalkjucniX
-            naslednjaPozicijaY = self.y + nalkjucniY
-            if naslednjaPozicijaX < 0 or naslednjaPozicijaX > sirina:
+        nalkjucniX = random.randint(-self.hitrost, self.hitrost)
+        nalkjucniY = random.randint(-self.hitrost, self.hitrost)
+        return nalkjucniX, nalkjucniY
 
-                nalkjucniX = random.randint(-self.hitrost, self.hitrost)
-
-            elif naslednjaPozicijaY < 0 or naslednjaPozicijaY > visina:
-
-                nalkjucniY = random.randint(-self.hitrost, self.hitrost)
-            else:
-                break
-
-        self.x += nalkjucniX
-        self.y += nalkjucniY
+    def premakni_barabo(self, xb, yb):
+        self.x = xb
+        self.y = yb

@@ -1,6 +1,7 @@
-from random import random, choice
+from random import random, choice, randint
 
 import pygame, sys
+from pygame import font
 from pygame.locals import *
 
 from src.app._app import App
@@ -36,6 +37,15 @@ class GUI(App):
         # Update the display
         pygame.display.update()
 
+        stBarab = self.level * GameConfig.ST_BARAB.value
+        self.maxKoraki = GameConfig.MAX_KORAKI.value
+
+        # generiraj vse mozne kombinacije matrice
+        for i in range(10):
+            x = randint(0, self.width)
+            y = randint(0, self.height)
+            pygame.draw.rect(self.windowSurface, (255, 0, 0), (x, y, 20, 20))
+        pygame.display.update()
         # Run the game loop
         # running = True
         # while running:
@@ -52,14 +62,17 @@ class GUI(App):
         sirina = GameConfig.SIRINA_ZEMLJE.value - self.level
         visina = GameConfig.VISINA_ZEMLJE.value - self.level
         self.maxKoraki = GameConfig.MAX_KORAKI.value
+
         # generiraj vse mozne kombinacije matrice
         moznePozicije = [(x, y) for x in range(sirina) for y in range(visina)]
         for i in range(stBarab):
             # izberi med pozicijami, ki so še na voljo
             x, y = choice(moznePozicije)
+
             barabe.append(Baraba(x=x, y=y, hitrost=GameConfig.HITROST_BARABE.value))
             # vsakic odstrani pozicijo barabe iz moznih pozicij
             moznePozicije.remove((x, y))
+            pygame.display.update()
         # izberi pozicije za heroja in princesko
         xh, yh = choice(moznePozicije)
         moznePozicije.remove((xh, yh))
@@ -85,13 +98,15 @@ class GUI(App):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    self.zemlja.premakni_heroja(-2, 0)
+                    self.zemlja.premakni_heroja(-1, 0)
                 elif event.key == pygame.K_d:
-                    self.zemlja.premakni_heroja(2, 0)
+                    self.zemlja.premakni_heroja(1, 0)
                 elif event.key == pygame.K_w:
-                    self.zemlja.premakni_heroja(0, -2)
+                    self.zemlja.premakni_heroja(0, -1)
                 elif event.key == pygame.K_s:
-                    self.zemlja.premakni_heroja(0, 2)
+                    self.zemlja.premakni_heroja(0, 1)
+                elif event.key == pygame.K_q:
+                    sys.exit()
 
     def end_game_conditions(self):
         pass
@@ -149,4 +164,3 @@ if __name__ == '__main__':
     while running:
         app.draw_game()
         app.input()
-
