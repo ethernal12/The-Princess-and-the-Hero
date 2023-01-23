@@ -27,7 +27,7 @@ class GameConfig(Enum):
     MAX_KORAKI = 100
     KORAKI_SPODNJA_MEJA = 0
     REZULTAT = 0
-    ST_BARAB = 10
+    ST_BARAB = 5
     HITROST_BARABE = 2
     SIRINA_ZEMLJE = 13
     VISINA_ZEMLJE = 13

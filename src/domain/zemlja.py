@@ -33,43 +33,44 @@ class Zemlja:
             # prištej treutni poziciji barabe y
             nexty = y + yb
 
-            while (nextx, nexty) in trenutnePozicijeBarab:
+            while (nextx, nexty) in trenutnePozicijeBarab or (
+                    nextx < 0 or nextx > self.sirina or nexty < 0 or nexty > self.visina):
                 xb, yb = b.nakljucno_gibanje()
                 # prištej treutni poziciji barabe x
                 nextx = x + xb
                 # prištej treutni poziciji barabe y
                 nexty = y + yb
+                if nextx > self.sirina:
+                    print('dx je večji od širine')
+                    print('trenutna pozicija ', nextx, nexty)
+                    print('naslednja pozicija ', nextx % self.sirina, nexty)
+                    nextx %= self.sirina
+                elif nextx < 0:
+                    print('x je manjši od 0')
+                    print('trenutna pozicija ', nextx, nexty)
+                    print('naslednja pozicija ', self.sirina + nextx, nexty)
+                    nextx += self.sirina
+                elif nexty > self.visina:
+                    print('y je večji od višine')
+                    print('trenutna pozicija ', nextx, nexty)
+                    print('naslednja pozicija ', nextx, nexty % self.visina)
+                    nexty %= self.visina
+                elif nexty < 0:
+                    print('y je manjši od 0')
+                    print('trenutna pozicija ', nextx, nexty)
+                    print('naslednja pozicija ', nextx, self.visina + nexty)
+                    nexty += self.visina
+                else:
+                    print('v loopu in vse ok, težava v prisotnosti barabe')
+            print('izven loopa, premakni barabo')
+            b.premakni_barabo(nextx, nexty)
+            print('pozicija barabe', nextx, nexty)
             trenutnePozicijeBarab.append((nextx, nexty))
-            if nextx > self.sirina:
-                # print(i, ' je večji od širine')
-                # print('trenutna pozicija ', nextx, nexty)
-                # print('naslednja pozicija ', nextx % self.sirina, nexty)
-                b.premakni_barabo(nextx % self.sirina, nexty)
-            elif nextx < 0:
-                # print(i, ' je manjši od 0')
-                # print('trenutna pozicija ', nextx, nexty)
-                # print('naslednja pozicija ', self.sirina + nextx, nexty)
-                b.premakni_barabo(self.sirina + nextx, nexty)
-            elif nexty > self.visina:
-                # print(i, ' je večji od višine')
-                # print('trenutna pozicija ', nextx, nexty)
-                # print('naslednja pozicija ', nextx, nexty % self.visina)
-                b.premakni_barabo(nextx, nexty % self.visina)
-            elif nexty < 0:
-                # print(i, ' je manjši od 0')
-                # print('trenutna pozicija ', nextx, nexty)
-                # print('naslednja pozicija ', nextx, self.visina + nexty)
-                b.premakni_barabo(nextx, self.visina + nexty)
-            else:
-                # print(' vse ok')
-                # print('naslednja pozicija ', nextx, nexty)
-                b.premakni_barabo(nextx, nexty)
 
     # če si izven omejitve zemlje se heroj izriše na drugi strani
     def premakni_heroja(self, dx, dy):
         x = self.hero.x
         y = self.hero.y
-
         if x + dx > self.sirina:
             self.hero.x = 0
         elif x + dx < 0:
@@ -81,3 +82,28 @@ class Zemlja:
         else:
             self.hero.premik(dx=dx, dy=dy)
 
+    def preveri_pozicijo_barabe(self, baraba, nextx, nexty):
+        if nextx > self.sirina:
+            print(' je večji od širine')
+            print('trenutna pozicija ', nextx, nexty)
+            print('naslednja pozicija ', nextx % self.sirina, nexty)
+            baraba.premakni_barabo(nextx % self.sirina, nexty)
+        elif nextx < 0:
+            print(' je manjši od 0')
+            print('trenutna pozicija ', nextx, nexty)
+            print('naslednja pozicija ', self.sirina + nextx, nexty)
+            baraba.premakni_barabo(self.sirina + nextx, nexty)
+        elif nexty > self.visina:
+            print(' je večji od višine')
+            print('trenutna pozicija ', nextx, nexty)
+            print('naslednja pozicija ', nextx, nexty % self.visina)
+            baraba.premakni_barabo(nextx, nexty % self.visina)
+        elif nexty < 0:
+            print(' je manjši od 0')
+            print('trenutna pozicija ', nextx, nexty)
+            print('naslednja pozicija ', nextx, self.visina + nexty)
+            baraba.premakni_barabo(nextx, self.visina + nexty)
+        else:
+            print(' vse ok')
+            print('naslednja pozicija ', nextx, nexty)
+            baraba.premakni_barabo(nextx, nexty)
