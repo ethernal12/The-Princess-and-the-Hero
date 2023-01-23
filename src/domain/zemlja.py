@@ -82,28 +82,3 @@ class Zemlja:
         else:
             self.hero.premik(dx=dx, dy=dy)
 
-    def preveri_pozicijo_barabe(self, baraba, nextx, nexty):
-        if nextx > self.sirina:
-            print(' je večji od širine')
-            print('trenutna pozicija ', nextx, nexty)
-            print('naslednja pozicija ', nextx % self.sirina, nexty)
-            baraba.premakni_barabo(nextx % self.sirina, nexty)
-        elif nextx < 0:
-            print(' je manjši od 0')
-            print('trenutna pozicija ', nextx, nexty)
-            print('naslednja pozicija ', self.sirina + nextx, nexty)
-            baraba.premakni_barabo(self.sirina + nextx, nexty)
-        elif nexty > self.visina:
-            print(' je večji od višine')
-            print('trenutna pozicija ', nextx, nexty)
-            print('naslednja pozicija ', nextx, nexty % self.visina)
-            baraba.premakni_barabo(nextx, nexty % self.visina)
-        elif nexty < 0:
-            print(' je manjši od 0')
-            print('trenutna pozicija ', nextx, nexty)
-            print('naslednja pozicija ', nextx, self.visina + nexty)
-            baraba.premakni_barabo(nextx, self.visina + nexty)
-        else:
-            print(' vse ok')
-            print('naslednja pozicija ', nextx, nexty)
-            baraba.premakni_barabo(nextx, nexty)
