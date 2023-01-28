@@ -1,8 +1,6 @@
 from ctypes import string_at
 from dataclasses import dataclass
 
-from pip._internal.utils.misc import enum
-
 from src.domain.baraba import Baraba
 from src.domain.zemlja import Zemlja
 from src.domain.hero import Hero

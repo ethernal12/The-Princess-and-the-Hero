@@ -12,8 +12,6 @@ class Baraba:
     # NALJKUČNI X = NONE
 
     def nakljucno_gibanje(self):
-        global nalkjucniX
-        global nalkjucniY
         nalkjucniX = random.randint(-self.hitrost, self.hitrost)
         nalkjucniY = random.randint(-self.hitrost, self.hitrost)
         return nalkjucniX, nalkjucniY

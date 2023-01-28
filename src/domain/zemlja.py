@@ -18,12 +18,11 @@ class Zemlja:
 
     def premakni_barabo(self):
         trenutnePozicijeBarab = []
-        i = 0
 
         for b in self.barabe:
             trenutnePozicijeBarab.append((b.x, b.y))
         for b in self.barabe:
-            i += 1
+            # izbriši trenutno pozicijo barabe iz liste barab
             trenutnePozicijeBarab.remove((b.x, b.y))
             # izberi novo pozicijo barabe
             xb, yb = b.nakljucno_gibanje()
@@ -32,7 +31,6 @@ class Zemlja:
             nextx = x + xb
             # prištej treutni poziciji barabe y
             nexty = y + yb
-
             while (nextx, nexty) in trenutnePozicijeBarab or (
                     nextx < 0 or nextx > self.sirina or nexty < 0 or nexty > self.visina):
                 xb, yb = b.nakljucno_gibanje()
@@ -41,13 +39,25 @@ class Zemlja:
                 # prištej treutni poziciji barabe y
                 nexty = y + yb
                 if nextx > self.sirina:
+                    print('x je večji od širine')
+                    print('trenutni x', nextx)
                     nextx %= self.sirina
+                    print('naslednji x', nextx)
                 elif nextx < 0:
-                    nextx += self.sirina
+                    print('x je manjši od širine')
+                    print('trenutni x', nextx)
+                    nextx = self.sirina + xb
+                    print('naslednji x', nextx)
                 elif nexty > self.visina:
+                    print('y je večji od širine')
+                    print('trenutni y', nexty)
                     nexty %= self.visina
+                    print('naslednji y', nexty)
                 elif nexty < 0:
-                    nexty += self.visina
+                    print('y je manjši od širine')
+                    print('trenutni y', nexty)
+                    nexty = self.visina + yb
+                    print('naslednji y', nexty)
             b.premakni_barabo(nextx, nexty)
             trenutnePozicijeBarab.append((nextx, nexty))
 
