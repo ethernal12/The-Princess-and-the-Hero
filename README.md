@@ -4,7 +4,7 @@
 
 * Demo GIF igre:
 
-<img src="https://raw.githubusercontent.com/ethernal12/The-Princess-and-the-Hero/master/GIF_game_demo.gif" width="100%" height="400">
+<img src="https://raw.githubusercontent.com/ethernal12/The-Princess-and-the-Hero/master/GIF_game_demo.gif" width="100%">
 
 * Kloniraj REPO in v root direktoriju zaženi \__main__.py z ukazom:
 
